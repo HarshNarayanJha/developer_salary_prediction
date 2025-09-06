@@ -1,8 +1,7 @@
 # %% Cell 1
-import pandas as pd
-import numpy as np
 import matplotlib.pyplot as plt
-
+import numpy as np
+import pandas as pd
 
 # %% Cell 2
 df = pd.read_csv("data/survey_results_public.csv")
@@ -70,11 +69,7 @@ df = df[df["Country"] != "Other"]
 # %% Cell 13
 
 df["YearsCodePro"] = df["YearsCodePro"].apply(
-    lambda x: 50
-    if x == "More than 50 years"
-    else 0.5
-    if x == "Less than 1 year"
-    else float(x)
+    lambda x: 50 if x == "More than 50 years" else 0.5 if x == "Less than 1 year" else float(x)
 )
 df["YearsCodePro"].unique()
 
@@ -132,7 +127,7 @@ y_pred = reg.predict(X_test)
 
 # %% Cell 20
 
-from sklearn.metrics import mean_squared_error, mean_absolute_error
+from sklearn.metrics import mean_absolute_error, mean_squared_error
 
 error = np.sqrt(mean_squared_error(y_test, y_pred))
 print(error)
@@ -149,7 +144,7 @@ reg.fit(X_train, y_train)
 y_pred = reg.predict(X_test)
 
 # %% Cell 23
-from sklearn.metrics import mean_squared_error, mean_absolute_error
+from sklearn.metrics import mean_squared_error
 
 error = np.sqrt(mean_squared_error(y_test, y_pred))
 print(error)
@@ -166,7 +161,7 @@ reg.fit(X_train, y_train)
 y_pred = reg.predict(X_test)
 
 # %% Cell 26
-from sklearn.metrics import mean_squared_error, mean_absolute_error
+from sklearn.metrics import mean_squared_error
 
 error = np.sqrt(mean_squared_error(y_test, y_pred))
 print(error)
@@ -178,7 +173,7 @@ max_depth = [None, 2, 4, 6, 8, 10, 12]
 parameters = {"max_depth": max_depth}
 
 reg = RandomForestRegressor()
-gs = GridSearchCV(reg, parameters, scoring='neg_mean_squared_error')
+gs = GridSearchCV(reg, parameters, scoring="neg_mean_squared_error")
 gs.fit(X_train, y_train)
 
 # %% Cell 28
@@ -209,10 +204,10 @@ y_app_pred
 import pickle
 
 data = {
-    'model': reg,
-    'le_country': le_country,
-    'le_education': le_education,
+    "model": reg,
+    "le_country": le_country,
+    "le_education": le_education,
 }
 
-with open('model.pkl', 'wb') as file:
+with open("model.pkl", "wb") as file:
     pickle.dump(data, file)

@@ -1,0 +1,22 @@
+[project]
+name = "developer-salary-prediction"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "matplotlib>=3.10.6",
+    "numpy>=2.3.2",
+    "pandas>=2.3.2",
+    "scikit-learn>=1.7.1",
+    "streamlit>=1.49.1",
+]
+
+[dependency-groups]
+dev = [
+    "ipykernel>=6.30.1",
+    "pandas-stubs>=2.3.2.250827",
+]
+
+[tool.pyright]
+typeCheckingMode = "basic"
